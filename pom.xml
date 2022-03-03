@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.pdev</groupId>
+  <artifactId>hivelook</artifactId>
+  <version>1.0.0</version>
+
+  <name>hivelook</name>
+  <url>http://www.example.com</url>
+
+  <packaging>jar</packaging>
+  <build>
+    <finalName>HiveLook</finalName>
+  </build>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <repositories>
+    <!-- SPIGOT -->
+    <repository>
+      <id>spigot-repo</id>
+      <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+    </repository>
+    <!-- Minecraft Server (Aikar) -->
+    <repository>
+      <id>aikar-release</id>
+      <url>https://repo.aikar.co/nexus/content/repositories/aikar-release/</url>
+    </repository>
+  </repositories>
+
+  <dependencies>
+    <!-- SPIGOT -->
+    <dependency>
+      <groupId>org.spigotmc</groupId>
+      <artifactId>spigot-api</artifactId>
+      <version>1.18.2-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+    <!-- Minecraft Server -->
+    <dependency>
+      <groupId>com.mojang</groupId>
+      <artifactId>authlib</artifactId>
+      <version>1.11</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>

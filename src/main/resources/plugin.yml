@@ -1,0 +1,18 @@
+name: HiveLook
+main: com.pdev.hivelook.Main
+description: Use GUIs to look into beehives!
+version: 1.0.0
+author: pdev
+api-version: 1.15
+
+commands:
+  hivelook:
+    aliases:
+    - hl
+    usage: /<command>
+    permission: hivelook.admin
+
+permissions:
+  hivelook.use:
+    description: When permissions are enabled in the config, users need this permission to open the Hive GUIs
+    default: op
