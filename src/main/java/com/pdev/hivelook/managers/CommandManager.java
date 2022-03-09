@@ -80,7 +80,8 @@ public class CommandManager implements CommandExecutor, TabCompleter {
                 // Check Permissions
                 if (!c.hasPermission(sender)) {
                     if (!(sender instanceof Player)) {
-                        sender.sendMessage(StringUtils.colorize(prefix + "&7This command cannot be run from the console."));
+                        sender.sendMessage(
+                                StringUtils.colorize(prefix + "&7This command cannot be run from the console."));
                     } else {
                         sender.sendMessage(StringUtils.colorize(prefix + "&cInsufficient permissions."));
                     }
@@ -100,7 +101,8 @@ public class CommandManager implements CommandExecutor, TabCompleter {
                     } else if (e.getMessage().equalsIgnoreCase("no-player")) {
                         sender.sendMessage(StringUtils.colorize(prefix + "&7Player not found."));
                     } else {
-                        sender.sendMessage(StringUtils.colorize("&cAn internal error has occured, please contact an admin. We are sorry for the inconvenience!"));
+                        sender.sendMessage(StringUtils.colorize(
+                                "&cAn internal error has occured, please contact an admin. We are sorry for the inconvenience!"));
 
                         e.printStackTrace();
                     }

@@ -6,10 +6,10 @@
 
   <groupId>com.pdev</groupId>
   <artifactId>hivelook</artifactId>
-  <version>1.0.0</version>
+  <version>1.1.0</version>
 
-  <name>hivelook</name>
-  <url>http://www.example.com</url>
+  <name>HiveLook</name>
+  <url>https://github.com/pdev-op</url>
 
   <packaging>jar</packaging>
   <build>

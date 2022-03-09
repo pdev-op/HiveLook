@@ -1,7 +1,7 @@
 name: HiveLook
 main: com.pdev.hivelook.Main
 description: Use GUIs to look into beehives!
-version: 1.0.0
+version: 1.1.0
 author: pdev
 api-version: 1.15
 
