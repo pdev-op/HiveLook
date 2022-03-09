@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.pdev.hivelook.Main;
+import com.pdev.hivelook.api.Config;
 import com.pdev.hivelook.utils.ItemUtils;
 import com.pdev.hivelook.utils.StringUtils;
 
@@ -32,9 +33,6 @@ public class HiveGui implements InventoryHolder {
     private int bees;
     private int honey;
 
-    // Coming soon for live update
-    // private BukkitTask task;
-
     public HiveGui(Main plugin, Player player, Beehive beehive) {
         this.plugin = plugin;
         this.player = player;
@@ -46,28 +44,33 @@ public class HiveGui implements InventoryHolder {
     public String getName() {
         return StringUtils.colorize(plugin.getConfigFile().getHiveGuiTitle()
                 .replaceAll("%bees%", Integer.toString(bees))
-                .replaceAll("%honey%", Integer.toString(honey))
-        );
+                .replaceAll("%honey%", Integer.toString(honey)));
     }
 
     public void setItems() {
-        // Move Item
-        ItemStack move = new ItemStack(Material.BARRIER);
-        ItemMeta moveMeta = move.getItemMeta();
-        moveMeta.setDisplayName(StringUtils.colorize("&c&lForce Bees Out"));
-        move.setItemMeta(moveMeta);
+        // Config file
+        Config cf = plugin.getConfigFile();
 
-        inventory.setItem(0, move);
-        
         // Random
-        ArrayList<Integer> slots = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8));
+        ArrayList<Integer> slots = new ArrayList<>(Arrays.asList(0, 1, 2, 3, 4, 5, 6, 7, 8));
+
+        // Move Item
+        if (cf.getUseEject()) {
+            ItemStack move = new ItemStack(Material.BARRIER);
+            ItemMeta moveMeta = move.getItemMeta();
+            moveMeta.setDisplayName(StringUtils.colorize("&c&lForce Bees Out"));
+            move.setItemMeta(moveMeta);
+
+            inventory.setItem(0, move);
+            slots.remove(0);
+        }
 
         // Bees
         for (int i = 0; i < bees; i++) {
             int randomSlot = random.nextInt(slots.size());
             int slot = slots.get(randomSlot);
             ItemStack bee = getRandomBeeHead();
-            
+
             inventory.setItem(slot, bee);
             slots.remove(randomSlot);
         }
@@ -85,10 +88,12 @@ public class HiveGui implements InventoryHolder {
         }
 
         // Empty Slots
-        for (Integer slot : slots) {
-            ItemStack empty = getEmptyItem();
+        if (cf.getUseEmptyItem()) {
+            for (Integer slot : slots) {
+                ItemStack empty = getEmptyItem();
 
-            inventory.setItem(slot, empty);
+                inventory.setItem(slot, empty);
+            }
         }
     }
 
@@ -96,7 +101,7 @@ public class HiveGui implements InventoryHolder {
         int slot = e.getSlot();
 
         // Move bees
-        if (slot == 0) {
+        if (slot == 0 && plugin.getConfigFile().getUseEject()) {
             EntityBlockStorage<Bee> beeStorage = (EntityBlockStorage<Bee>) beehive;
             List<Bee> bees = (List<Bee>) beeStorage.releaseEntities();
 
@@ -115,9 +120,7 @@ public class HiveGui implements InventoryHolder {
                 InventoryType.DISPENSER,
                 StringUtils.colorize(plugin.getConfigFile().getHiveGuiTitle()
                         .replaceAll("%bees%", Integer.toString(bees))
-                        .replaceAll("%honey%", Integer.toString(honey))
-                )
-        );
+                        .replaceAll("%honey%", Integer.toString(honey))));
 
         setItems();
 
@@ -133,24 +136,26 @@ public class HiveGui implements InventoryHolder {
         List<String> beeHeads = plugin.getConfigFile().getBeeTextures();
         String b64 = beeHeads.get(random.nextInt(beeHeads.size()));
 
-        return ItemUtils.makeCustomSkull(b64, "&eBee", new ArrayList<String>());
+        return ItemUtils.makeCustomSkull(b64, plugin.getConfigFile().getBeeName(), new ArrayList<String>());
     }
 
     private ItemStack getHoneyItem() {
-        ItemStack hon = new ItemStack(Material.ORANGE_STAINED_GLASS_PANE);
+        Config cf = plugin.getConfigFile();
+        ItemStack hon = new ItemStack(cf.getHoneyMaterial());
         ItemMeta honeyMeta = hon.getItemMeta();
 
-        honeyMeta.setDisplayName(StringUtils.colorize("&6Honey"));
+        honeyMeta.setDisplayName(cf.getHoneyName());
         hon.setItemMeta(honeyMeta);
 
         return hon;
     }
 
     private ItemStack getEmptyItem() {
-        ItemStack empty = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
+        Config cf = plugin.getConfigFile();
+        ItemStack empty = new ItemStack(cf.getEmptyMaterial());
         ItemMeta emptyMeta = empty.getItemMeta();
 
-        emptyMeta.setDisplayName(StringUtils.colorize(" "));
+        emptyMeta.setDisplayName(cf.getEmptyName());
         empty.setItemMeta(emptyMeta);
 
         return empty;

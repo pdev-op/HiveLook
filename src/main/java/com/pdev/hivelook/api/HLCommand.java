@@ -16,25 +16,23 @@ public abstract class HLCommand {
         this.plugin = plugin;
     }
 
-    public ArrayList<String> getAliases() { return this.aliases; }
+    public ArrayList<String> getAliases() {
+        return this.aliases;
+    }
 
-    public void setAliases(ArrayList<String> a)
-    {
+    public void setAliases(ArrayList<String> a) {
         this.aliases = a;
     }
 
-    public void addAlias(String a)
-    {
+    public void addAlias(String a) {
         this.aliases.add(a);
     }
 
-    public String getUsage()
-    {
+    public String getUsage() {
         return this.usage;
     }
 
-    public void setUsage(String usage)
-    {
+    public void setUsage(String usage) {
         this.usage = usage;
     }
 

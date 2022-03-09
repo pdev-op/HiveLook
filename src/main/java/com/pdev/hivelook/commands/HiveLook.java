@@ -61,13 +61,15 @@ public class HiveLook extends HLCommand {
         TextComponent title = new TextComponent(StringUtils.colorize("&e&lHive&6&lLook &rHelp Page"));
         title.setClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, ""));
         title.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT,
-            new Text(StringUtils.colorize("&e&lHive&6&lLook\n&7Version: &f" + plugin.getDescription().getVersion() + "\n&7Written by &dpdev\n\n&7➥ &eClick to go to plugin page"))));
+                new Text(StringUtils.colorize("&e&lHive&6&lLook\n&7Version: &f" + plugin.getDescription().getVersion()
+                        + "\n&7Written by &dpdev\n\n&7➥ &eClick to go to plugin page"))));
         sender.spigot().sendMessage(title);
 
         // Reload
         TextComponent reload = new TextComponent(StringUtils.colorize("&8- &7/hivelook &nreload"));
         reload.setClickEvent(new ClickEvent(ClickEvent.Action.SUGGEST_COMMAND, "/hivelook reload"));
-        reload.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(StringUtils.colorize("&7Description: &fReload the plugin & config.\n&7Permission: &fhivelook.admin"))));
+        reload.setHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, new Text(
+                StringUtils.colorize("&7Description: &fReload the plugin & config.\n&7Permission: &fhivelook.admin"))));
 
         sender.spigot().sendMessage(reload);
 
