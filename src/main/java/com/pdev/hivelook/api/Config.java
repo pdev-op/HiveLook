@@ -65,7 +65,7 @@ public class Config {
     public Material getHoneyMaterial() {
         Material material = Material.getMaterial(config.getString("honey-material", " "));
 
-        return material != null ? material : Material.GRAY_STAINED_GLASS_PANE;
+        return material != null ? material : Material.ORANGE_STAINED_GLASS_PANE;
     }
 
     public String getHoneyName() {

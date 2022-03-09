@@ -29,7 +29,8 @@ public class Main extends JavaPlugin {
         long start = System.currentTimeMillis();
 
         // Logging
-        Bukkit.getConsoleSender().sendMessage("§eHiveLook §7v" + getDescription().getVersion() + " by pdev enabling...");
+        Bukkit.getConsoleSender()
+                .sendMessage("§eHiveLook §7v" + getDescription().getVersion() + " by pdev enabling...");
 
         // Config
         config = new Config(this);

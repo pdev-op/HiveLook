@@ -3,7 +3,7 @@
 # |  _  ||   |\  |  /|   __||  |---|  |  ||  |  ||  _ < 
 # \__|__/\___/ \___/ \_____/\_____/\_____/\_____/|__|__\
 #
-# HiveLook version 1.0.0
+# HiveLook version 1.1.0
 # by pdev
 
 # GENERAL SETTINGS
@@ -35,3 +35,35 @@ bee-textures:
 - "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvNTlhYzE2ZjI5NmI0NjFkMDVlYTA3ODVkNDc3MDMzZTUyNzM1OGI0ZjMwYzI2NmFhMDJmMDIwMTU3ZmZjYTczNiJ9fX0="
 - "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvZTQwMDIyM2YxZmE1NDc0MWQ0MjFkN2U4MDQ2NDA5ZDVmM2UxNWM3ZjQzNjRiMWI3Mzk5NDAyMDhmM2I2ODZkNCJ9fX0="
 - "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvYmRmYTAzMDZhNWEzN2Q2OTU1NTE0YmRhZjM0NDRkMWVhOTQ3ZDg4ZGI0MzBjNjM3MzNiMDk1ZTZkOGQ3ZjNiNSJ9fX0="
+
+# bee-name: The name given to each bee item in the GUI
+# - By default it is "&eBee"
+# - Hex colors supported
+bee-name: "&eBee"
+
+# use-eject-button: Whether to have the eject bees button in the GUI or not
+# - Enabled by default
+use-eject-button: true
+
+# honey-material: The material of the item used to show honey in the GUI
+# - By default it is ORANGE_STAINED_GLASS_PANE
+# - Here is a list of allowed materials: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html
+honey-material: "ORANGE_STAINED_GLASS_PANE"
+
+# honey-name: The name of the honey item in the GUI
+# - Hex colors & normal MC colors supported (&# for hex colors)
+# - "&6Honey" by default
+honey-name: "&6Honey"
+
+# item-in-empty-slot: Whether there should be an item placed in empty slots in the hive
+# - By default this is enabled
+# - If disabled there will only be bees & honey shown in the hive
+item-in-empty-slot: true
+
+# empty-material: The material of the item used to show an empty slot in the GUI
+# - By default it is GRAY_STAINED_GLASS_PANE
+empty-material: "GRAY_STAINED_GLASS_PANE"
+
+# empty-name: The name of the empty slot item
+# - By default it is " " (which leaves it as a blank name)
+empty-name: " "
